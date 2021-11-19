@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+
+    
+    <h1 id="activities"></h1>
+    <h3 id="type"></h3>
+    <h4 id="participants"></h4>
+    <h4 id="price"></h4>
+    <h4 id="link"></h4>
+
+</div>
+
+<script>
+    const activities = document.getElementById("activities");
+    const type = document.getElementById("type");
+    const participants = document.getElementById("participants");
+    const price = document.getElementById("price");
+    const link = document.getElementById("link");
+
+    function dosomething () {
+        fetch('https://www.boredapi.com/api/activity/')
+    .then(res=> res.json())
+    .then(data =>{
+        console.log(data);
+        activities.innerHTML = data.activity;
+        type.innerHTML = data.type;
+        participants.innerHTML = data.participants;
+        price.innerHTML = data.price;
+        link.innerHTML = data.link
+    })
+     } 
+
+    
+    
+    setInterval(() => {
+        dosomething()
+    }, 2000);
+
+</script>
+
+</body>
+</html>
